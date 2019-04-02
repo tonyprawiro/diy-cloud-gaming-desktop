@@ -22,35 +22,41 @@ After logging in to your AWS account, choose the region at the top right corner.
 
 # Step : Create a Security Group
 
-<img src="images/security-group.png" />
+<img src="images/security-group.png" width="600" />
 
 # Step : Create an EBS Volume for Storing Game Data
 
-<img src="images/ebs-volume.png" />
+<img src="images/ebs-volume.png" width="600" />
 
 # (Recommended) Step : Allocate an Elastic IP Address
 
-<img src="images/elastic-ip.png" />
+<img src="images/elastic-ip.png" width="600" />
 
 # Step : Start a g2.2xlarge Instance for Imaging Purpose
 
-<img src="images/os.png" />
+<img src="images/os.png" width="600" />
 
-<img src="images/instance-type.png" />
+<img src="images/instance-type.png" width="600" />
 
-<img src="images/storage.png" />
+<img src="images/storage.png" width="600" />
 
-<img src="images/instance-tags.png" />
+<img src="images/instance-tags.png" width="600" />
 
-<img src="images/security-group.png" />
+<img src="images/security-group.png" width="600" />
 
 <img src="images/launch.png" width="600" />
 
 # Step : Associate the Elastic IP to the Instance
 
-<img src="images/associate-eip.png" />
+<img src="images/associate-eip.png" width="600" />
 
 # Step : Attach the EBS Volume to the Instance
+
+<img src="images/attach-ebs.png" width="600" />
+
+# Step : Decrypt Administrator Password
+
+<img src="images/decrypt-windows-password.png" width="600" />
 
 # Step : Configure the Instance
 
