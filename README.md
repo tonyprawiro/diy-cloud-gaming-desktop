@@ -44,7 +44,7 @@ After logging in to your AWS account, choose the region at the top right corner.
 
 <img src="images/security-group.png" />
 
-<img src="images/launch.png" width="480" />
+<img src="images/launch.png" width="600" />
 
 # Step : Associate the Elastic IP to the Instance
 
