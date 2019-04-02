@@ -1,0 +1,6 @@
+{
+	"SecurityGroupIds": ["sg-12345678901234567"],
+	"ImageId":"ami-12345678901234567",
+	"InstanceType":"g2.2xlarge",
+	"SubnetId": "subnet-8ece90e9"
+}
