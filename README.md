@@ -16,6 +16,8 @@ In Singapore (ap-southeast-1) region, G2 Windows instance is offered at $1.16 pe
 
 To get a big EC2 discount, we can utilize Spot instance. In my experience, the Spot pricing for g2.2xlarge can be as low as $0.46. I often got $0.66 during non-peak hour. If I use it 20 hours in a month, I would be paying only $13.2. Now, this is way more affordable!
 
+### Problem
+
 When an instance is launched from Spot request, it is launched from an image (AMI). This means, the underlying EBS volumes are restored from snapshots, including the primary (boot) volume and any additional block devices in the mapping.
 
 Taken from https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-initialize.html:
