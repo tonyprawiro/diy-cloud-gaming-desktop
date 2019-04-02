@@ -2,6 +2,8 @@
 
 Proof of concept of using AWS GPU instance and Spot-block to build a powerful and cost-effective Steam-powered cloud gaming desktop.
 
+https://aws.amazon.com/blogs/aws/build-3d-streaming-applications-with-ec2s-new-g2-instance-type/
+
 # Disclaimer
 
 This guide is intended for people who already have decent experience of using AWS and understand what they are doing.
@@ -60,25 +62,65 @@ After logging in to your AWS account, choose the region at the top right corner.
 
 # Step : Configure the Instance
 
+## Connect to the Instance via RDP
+
+<img src="images/connect-rdp.png" width="600" />
+
 ## (Recommended) Install Mozilla Firefox
 
-## Initialize the EBS Volume Drive
+<img src="images/getfirefox.png" width="600" />
 
-## Create NTFS Partition on the Drive
+## Prepare the EBS Volume Drive
 
-## Configure and Assign Drive Letter to the Partition
+diskmgmt.msc
+
+<img src="images/disk-online.png" width="600" />
+
+<img src="images/disk-initialize.png" width="600" /> MBR partition style
+
+<img src="images/disk-newvolume.png" width="600" />
+
+Max size
+
+Assign drive letter D
+
+Format as NTFS (Quick Format)
 
 ## Install NVIDIA Graphics Driver
 
-## Enable Windows Audio Service
+https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/install-nvidia-driver-windows.html
+
+<img src="images/download-driver.png" width="600" />
+
+<img src="images/download-driver2.png" width="600" />
+
+Restart
+
+## Disable Microsoft Basic Display Adapter
+
+Open Device Manager
+
+<img src="images/disable-basic-display-driver.png" width="600" />
+
+## Start and Enable Windows Audio Service
+
+<img src="images/windows-audio-service.png" width="600" />
 
 ## (Optional) Install NotePad++
 
+<img src="images/notepadplusplus.png" width="600" />
+
 ## Change Documents Folder Location
+
+<img src="images/move-documents.png" width="600" />
 
 ## Download and Install Steam
 
+<img src="images/install-steam.png" width="600" />
+
 ## Download and Install the Game
+
+
 
 # Step : Stop the Instance and Detach the EBS Volume
 
