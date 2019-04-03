@@ -6,7 +6,7 @@ I like to play PC games, occasionally. The XCOM franchise is one of my favorites
 
 Here it is in action:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IlNQ_rGtdjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![XCOM2](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/embed/IlNQ_rGtdjc)
 
 ### EC2 GPU-accelerated Instance
 
