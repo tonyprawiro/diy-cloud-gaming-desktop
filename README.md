@@ -22,7 +22,7 @@ NVIDIA GRID GPUs are optimized for graphics rendering accuracy. However, it is a
 
 ### Cost
 
-In Singapore (ap-southeast-1) region, G2 Windows instance is offered at $1.16 per hour for on-demand pricing. This price point may look cheap at a glance ("hey, it's just a buck!"), but if you use it for many hours, it adds up and you may end up with a bill shock. If you use it for 20 hours in a month, I will be paying $23.2.
+In Singapore (ap-southeast-1) region, G2 Windows instance is offered at $1.16 per hour for on-demand pricing. This price point may look cheap at a glance ("hey, it's just a buck!"), but if you use it for many hours, it adds up and you may end up with a bill shock. If I use it for 20 hours in a month, I will be paying $23.2.
 
 To get a big EC2 discount without long-term commitment, we can utilize Spot instance. In my experience, the Spot pricing for g2.2xlarge can be as low as $0.46. I often got $0.66 during non-peak hour. If I use it 20 hours in a month, I would be paying only $13.2. Now, this is way more affordable for occasional gamers !
 
