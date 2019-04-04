@@ -4,7 +4,7 @@ This is a proof of concept of using AWS GPU instance and Spot Instance to build 
 
 I like to play PC games, occasionally. The XCOM franchise is one of my favorites, but the latest XCOM 2 title is a power-hungry application and my Microsoft Surface Pro can't support it. With cloud-gaming, it's possible to enjoy modern games on a low-end spec computer. The idea is that the actual game is run on a powerful machine in the cloud, and is played through a terminal over broadband network.
 
-[Demo](images/vid.gif)
+<img src="images/vid.gif" width="360" />
 
 ### EC2 GPU-accelerated Instance
 
@@ -499,7 +499,7 @@ Connect to the Instance via RDP. Recall the Administrator password and public IP
 
 Launch Steam app, and start the game!
 
-[Demo](images/vid.gif)
+<img src="images/vid.gif" width="360" />
 
 ## Step 8: Clean up
 
