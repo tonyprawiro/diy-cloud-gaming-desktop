@@ -1,12 +1,10 @@
 # diy-cloud-gaming-desktop
 
-This is a proof of concept of using AWS GPU instance and Spot-block to build a powerful and cost-effective Steam-powered cloud gaming desktop.
+This is a proof of concept of using AWS GPU instance and Spot Instance to build a powerful and cost-effective Steam-powered cloud gaming desktop.
 
 I like to play PC games, occasionally. The XCOM franchise is one of my favorites, but the latest XCOM 2 title is a power-hungry application and my Microsoft Surface Pro can't support it. With cloud-gaming, it's possible to enjoy modern games on a low-end spec computer. The idea is that the actual game is run on a powerful machine in the cloud, and is played through a terminal over broadband network.
 
-Here it is in action:
-
-[![XCOM2](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/embed/IlNQ_rGtdjc)
+[Demo](images/vid.gif)
 
 ### EC2 GPU-accelerated Instance
 
@@ -18,13 +16,13 @@ AWS EC2 G family instance types are optimized for graphics-intensive application
 - 15 GiB of RAM.
 - 60 GB of SSD storage.
 
-NVIDIA GRID GPUs are optimized for graphics rendering accuracy. However, it is also powerful enough to play modern games. Maybe not the most cost-effective graphic platform to play games, but you can do it.
+NVIDIA GRID GPUs are optimized for graphics rendering accuracy, and it is more than able to support modern games. Maybe not the most cost-effective graphic platform to play games, but you can do it.
 
 ### Cost
 
 In Singapore (ap-southeast-1) region, G2 Windows instance is offered at $1.16 per hour for on-demand pricing. This price point may look cheap at a glance ("hey, it's just a buck!"), but if you use it for many hours, it adds up and you may end up with a bill shock. If I use it for 20 hours in a month, I will be paying $23.2.
 
-To get a big EC2 discount without long-term commitment, we can utilize Spot instance. In my experience, the Spot pricing for g2.2xlarge can be as low as $0.46. I often got $0.66 during non-peak hour. If I use it 20 hours in a month, I would be paying only $13.2. Now, this is way more affordable for occasional gamers !
+To get a big EC2 discount without long-term commitment, we can use Spot Instance. There are two Spot strategies we can choose from: regular Spot Instance which has lower price point but higher chance of interruption, or Defined-Duration Spot (also called Spot-Block) which has higher price point but much lower chance of interruption. Both strategies allow you to get big discount than On-Demand. I've got $0.46 and $0.66 per hour pricing for regular Spot Instance and Spot-Block, respectively. This translates to $9.2 and $13.2 for 20 hours of use. This is way more affordable!
 
 ### Problem
 
@@ -302,7 +300,7 @@ Example output:
 ]
 ```
 
-## Step 2: Send a Spot-block Request
+## Step 2: Send a Spot Request
 
 Before sending a Spot Request, we need to create a launch specification file, which is a JSON formatted text file specifying the AMI, security group, instance type, and subnet ID.
 
@@ -317,7 +315,29 @@ Create a file similar to the following. Adjust the resource IDs, and then save a
 }
 ```
 
-Send a Spot-block request:
+You have two options of sending Spot request types: regular Spot Instance, or defined-duration (also called Spot-block). Regular Spot Instance pricing is lower than Spot-block. But you get higher chance of being interrupted.
+
+To get an idea of how much the current Spot pricing for each option, refer to this page:
+
+https://aws.amazon.com/ec2/spot/pricing/
+
+To get an idea of the probability of your instance getting interrupted, refer to this page:
+
+https://aws.amazon.com/ec2/spot/instance-advisor/
+
+To send a regular Spot request:
+
+```
+aws ec2 request-spot-instances --profile default --region ap-southeast-1 `
+    --spot-price 0.46 `
+	--instance-count 1 `
+	--launch-specification file://launchspec.json `
+	--type one-time
+```
+
+In the above example, we specify `0.46` as the `spot-price`, which is the price we want to bid. If your bid is successful, you will get an instance.
+
+To send a Spot-block request:
 
 ```
 aws ec2 request-spot-instances --profile default --region ap-southeast-1 `
@@ -478,6 +498,8 @@ Connect to the Instance via RDP. Recall the Administrator password and public IP
 ## Step 7: Launch Step and start playing
 
 Launch Steam app, and start the game!
+
+[Demo](images/vid.gif)
 
 ## Step 8: Clean up
 
