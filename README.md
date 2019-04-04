@@ -38,13 +38,13 @@ Taken from https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-initialize.ht
 >
 > You can avoid this performance hit in a production environment by **reading from all of the blocks on your volume before you use it; this process is called initialization. For a new volume created from a snapshot, you should read all the blocks that have data before using the volume.**
 
-This EBS initialization process and reading of all blocks can impact the game performance.
+The EBS initialization process and the reading of all blocks can impact the game performance.
 
-To avoid this situation, we decouple the game data from the AMI. Game data will be stored in a separate, persistent EBS volume, which will not be part of the AMI. When the Spot instance is launched, the EBS volume is attached and assigned drive letter D.
+To avoid this situation, we decouple the game data from the AMI. Game data will be stored in a separate, persistent EBS volume, which will not be part of the AMI. When the instance is launched, the EBS volume will be attached and assigned drive letter D. This means, the EBS volume does not need to be initialized; it is warm all the time.
 
-It's also important that save data is decoupled from the AMI too, so it survive instance termination. Some games these days stores data in "Documents" folder. In that case, we can move the underlying location of this folder to D: drive.
+It's also important that game data is decoupled from the AMI too, so that it survives instance termination. Some games store save data and config files in "Documents" folder. In that case, we can move the underlying location of this folder to D: drive.
 
-Those who already have experiences using AWS and configuring Windows OS will know how to do the above. The rest of the guide is provided for those who don't, and wish to know how this works.
+The rest of the document will describe how to do this.
 
 # Disclaimer
 
