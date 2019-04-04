@@ -22,7 +22,7 @@ AWS EC2 G family instance types are optimized for graphics-intensive application
 
 NVIDIA GRID GPUs are optimized for graphics rendering accuracy, and it is more than able to support modern games. Maybe not the most cost-effective graphic platform to play games, but you can do it.
 
-### Cost
+### Compute Cost
 
 In Singapore (ap-southeast-1) region, G2 Windows instance is offered at $1.16 per hour for on-demand pricing. This price point may look cheap at a glance ("hey, it's just a buck!"), but if you use it for many hours, it adds up and you may end up with a bill shock. If I use it for 20 hours in a month, I will be paying $23.2.
 
@@ -43,6 +43,8 @@ The EBS initialization process and the reading of all blocks can impact the game
 To avoid this situation, we decouple the game data from the AMI. Game data will be stored in a separate, persistent EBS volume, which will not be part of the AMI. When the instance is launched, the EBS volume will be attached and assigned drive letter D. This means, the EBS volume does not need to be initialized; it is warm all the time.
 
 It's also important that game data is decoupled from the AMI too, so that it survives instance termination. Some games store save data and config files in "Documents" folder. In that case, we can move the underlying location of this folder to D: drive.
+
+Note: Since the EBS volume is persistent, we will need to pay it separately. General Purpose SSD (gp2) is priced at $0.12 per GB-month. So, a 120 GB volume will cost $14.4 per month. You may want to opt for EBS Throughput Optimized HDD (st1) Volumes, which is priced at $0.054 per GB-month. This is about 50% cheaper than GP2, but will give different performance characteristics.
 
 The rest of the document will describe how to do this.
 
@@ -517,13 +519,4 @@ Spot-block instances will be automatically terminated after the specified durati
 
 You can also Shutdown the instance from within Windows and it will be stopped. In this case, the EBS volume will stay attached to the instance, until it is terminated.
 
-# Cost Calculation
-
-Compute: Assume Spot pricing of $0.66 per hour. For 20 hours of usage in a month, it will be $13.2
-
-Storage: EBS GP2 volume at $0.12 per GB-month of provisioned storage. For 120 GB volume, this means $14.4.
-
-Total cost per month: $27.6
-
-If we use Amazon EBS Throughput Optimized HDD (st1) Volumes for storage, a 120 GB volume will cost $6.48, and the total cost will be $19.68 per month.
   
