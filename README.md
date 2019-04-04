@@ -499,7 +499,11 @@ Example output:
 
 Connect to the Instance via RDP. Recall the Administrator password and public IP from previous steps.
 
-## Step 7: Launch Step and start playing
+## (Optional) Step 7: Ensure the EBS volume is mounted as D: drive
+
+Windows will usually mount a known volume and partition automatically. But if not, you can launch Disk Management to ensure that the EBS volume is online, and that the partition is assigned D: drive letter. 
+
+## Step 8: Launch Steam and start playing
 
 Launch Steam app, and start the game!
 
@@ -507,7 +511,7 @@ Here it is again:
 
 <img src="images/vid.gif" width="360" />
 
-## Step 8: Clean up
+## Clean up
 
 Spot-block instances will be automatically terminated after the specified duration. You can also Terminate the instance from EC2 console. In these scenarios, the EBS volume will survive termination as it will be detached and will be back into `available` state. 
 
